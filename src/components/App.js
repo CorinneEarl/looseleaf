@@ -12,7 +12,6 @@ export default class App extends Component{
   }
 
   componentDidMount(){
-    console.log('cccooookie', document.cookie)
     if(document.cookie){
       var stateUpdate = JSON.parse(document.cookie)
       stateUpdate.cookieLoaded = true;
@@ -36,9 +35,9 @@ export default class App extends Component{
     return !this.state.token && this.state.cookieLoaded
   }
 
-  giveUsername(){
-    return this.state.username
-  }
+  // giveUsername(){
+  //   return this.state.username
+  // }
 
   render() {
     const childProps = {
@@ -52,17 +51,27 @@ export default class App extends Component{
 
     return (
       <div>
-        <div id="looseleaf-logo"><img src={require('../../public/images/LL-logo.png')} /></div>
+        <div id="looseleaf-logo">
+          <img src={require('../../public/images/LL-logo.png')} />
+        </div>
         <nav>
           <ul role="nav">
-            {!this.state.token ? <li><Link to="/login" activeClassName="active">Login</Link></li>
-                               : <li><Link to="/login" onClick={this.logout.bind(this)} activeClassName="active">Logout</Link></li>}
-            {!this.state.token ? <li><Link to="/signup" activeClassName="active">Sign Up</Link></li> : ""}
-            {window.location.pathname.toLowerCase() === '/artboard' ? "" : <li><Link to="/about" activeClassName="active">About</Link></li>}
+            {!this.state.token ? <li><Link to="/login" activeClassName="active">
+                                    Login</Link>
+                                </li>
+                               : <li><Link to="/login" onClick={this.logout.bind(this)}
+                               activeClassName="active">Logout</Link></li>}
+            {!this.state.token ? <li><Link to="/signup" activeClassName="active">
+                                    Sign Up</Link>
+                                </li> : ""}
+            {window.location.pathname.toLowerCase() === '/artboard' ? "" :
+                                <li><Link to="/about" activeClassName="active">
+                                  About</Link>
+                                </li>}
           </ul>
-      </nav>
+        </nav>
 
-      {this.props.children && React.cloneElement(this.props.children, childProps)}
+        {this.props.children && React.cloneElement(this.props.children, childProps)}
       </div>
     )
   }

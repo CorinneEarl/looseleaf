@@ -8,5 +8,4 @@ module.exports = mongoose.model('Calendar', Schema ({
     date: Date,
     eventDate: String,
     current: Boolean
-
 }))

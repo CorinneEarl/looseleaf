@@ -51,41 +51,51 @@ class Goals extends Component {
       url: config.serverRoute + '/currentgoals/' + username
     }).done(function(data) {
       self.setState( {list: data} );
-    })
+    });
   }
 
   blankEntry () {
-    this.state.message === "I aspire to..." ? this.setState( {message: "Tell me, what is it you plan to do with your one wild and precious life?" } ) : this.setState( {message:  "I aspire to..."} )
+    this.state.message === "I aspire to..." ? this.setState(
+      {message: "Tell me, what is it you plan to do with your one wild and precious life?" } )
+       : this.setState( {message:  "I aspire to..."} )
   }
 
   createGoalEvent(e){
     e.preventDefault()
-
     if (this.state.entry === ""){
       this.blankEntry();
     } else {
-
-    var data = Object.assign({username: this.props.username}, this.state)
-    $.ajax ({
-      method: 'POST',
-      url: config.serverRoute + '/creategoal',
-      data: JSON.stringify(data),
-      contentType: 'application/json'
-    }).done(()=>{
-      this.setState({ entry:'' });
-      this.updateGoals();
-    })
+      var data = Object.assign({username: this.props.username}, this.state)
+      $.ajax ({
+        method: 'POST',
+        url: config.serverRoute + '/creategoal',
+        data: JSON.stringify(data),
+        contentType: 'application/json'
+      }).done(()=>{
+        this.setState({ entry:'' });
+        this.updateGoals();
+      });
+    }
   }
-}
 
   render() {
     return (
       <div id="goals">
-        <div><h1 id="Ghead" >Goals</h1></div>
-        <textarea placeholder={this.state.message}  value={this.state.entry} onChange={this.entryChange.bind(this)} />
-        <button className="glyphy  button" id="createGoal" value="Add goal" onClick={this.createGoalEvent.bind(this)} ><Glyphicon glyph="plus" /></button>
         <div>
-          <ul id="goalItem">{ this.createGoalList() }</ul>
+          <h1 id="Ghead">
+            Goals
+          </h1>
+        </div>
+        <textarea placeholder={this.state.message}  value={this.state.entry}
+          onChange={this.entryChange.bind(this)} />
+        <button className="glyphy  button" id="createGoal" value="Add goal"
+          onClick={this.createGoalEvent.bind(this)} >
+          <Glyphicon glyph="plus" />
+        </button>
+        <div>
+          <ul id="goalItem">
+            { this.createGoalList() }
+          </ul>
         </div>
       </div>
     );
@@ -99,7 +109,7 @@ class GoalItem extends Component {
     $.ajax ({
       method: 'PUT',
       url: config.serverRoute + '/goalComplete/' + this.props.entry._id
-    }).done(()=>this.props.updateGoals())
+    }).done(()=>this.props.updateGoals());
   }
 
   render(){
@@ -111,4 +121,5 @@ class GoalItem extends Component {
       </span>)
   }
 }
+
 export default Goals;

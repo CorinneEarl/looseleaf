@@ -15,68 +15,67 @@ class Todo extends Component {
     };
   }
 
-componentWillMount(){
-  if(this.props.username){
-    this.updateCurrentTodo();
+  componentWillMount(){
+    if(this.props.username){
+      this.updateCurrentTodo();
+    }
   }
-}
 
-componentWillReceiveProps(nextProps){
-  if(this.props.username !== nextProps.username){
-    this.updateCurrentTodo(nextProps.username);
+  componentWillReceiveProps(nextProps){
+    if(this.props.username !== nextProps.username){
+      this.updateCurrentTodo(nextProps.username);
+    }
   }
-}
 
-entryChange(e) {
-  this.setState( {entry: e.target.value} )
-}
+  entryChange(e) {
+    this.setState( {entry: e.target.value} )
+  }
 
-createList(){
-  const sortByDate = (a,b) =>
-      this.state.asc * (new Date(b.date)-new Date(a.date))
-  var list = this.state.list;
-    return list
-      .sort(sortByDate)
-      .filter(entry => entry.current)
-      .map((entry) => <TodoItem key={entry._id} entry={entry} updateCurrentTodo={this.updateCurrentTodo.bind(this)}/> )
-}
+  createList(){
+    const sortByDate = (a,b) =>
+        this.state.asc * (new Date(b.date)-new Date(a.date))
+    var list = this.state.list;
+      return list
+        .sort(sortByDate)
+        .filter(entry => entry.current)
+        .map((entry) => <TodoItem key={entry._id} entry={entry} updateCurrentTodo={this.updateCurrentTodo.bind(this)}/> )
+  }
 
-updateCurrentTodo(username){
-  var self = this;
-  username = username || self.props.username
-  console.log('updating todos for ' + username)
-  $.ajax ({
-    method: 'GET',
-    url: config.serverRoute + '/currentTodos/' + username
-  }).done(function(data) {
-    console.log('All the data', [])
-    self.setState({list: data} );
-  })
-}
+  updateCurrentTodo(username){
+    var self = this;
+    username = username || self.props.username
+    console.log('updating todos for ' + username)
+    $.ajax ({
+      method: 'GET',
+      url: config.serverRoute + '/currentTodos/' + username
+    }).done(function(data) {
+      console.log('All the data', [])
+      self.setState({list: data} );
+    });
+  }
 
+  blankEntry () {
+    this.state.message === "To-do item..." ? this.setState(
+      {message: "Be clenched, curious."}
+    ) : this.setState( {message:  "To-do item..."} )
+  }
 
-blankEntry () {
-  this.state.message === "To-do item..." ? this.setState( {message: "Be clenched, curious."} ) : this.setState( {message:  "To-do item..."} )
-}
-
-
-createTodoEvent(){
-
-  if (this.state.entry === "") {
-    this.blankEntry();
-  } else {
+  createTodoEvent(){
+    if (this.state.entry === "") {
+      this.blankEntry();
+    } else {
       var data = Object.assign({username: this.props.username}, this.state)
       $.ajax ({
-      method: 'POST',
-      url: config.serverRoute + '/createtodo',
-      data: JSON.stringify(data),
-      contentType: 'application/json'
-      }).done(()=>{
-      this.setState({ entry:'' });
-      this.updateCurrentTodo();
-      }) //clear form after entry
+        method: 'POST',
+        url: config.serverRoute + '/createtodo',
+        data: JSON.stringify(data),
+        contentType: 'application/json'
+        }).done(()=>{
+        this.setState({ entry:'' });
+        this.updateCurrentTodo();
+      });
+    }
   }
-}
 
   render() {
     if(!this.props.username)
@@ -84,12 +83,22 @@ createTodoEvent(){
         <div>
           Loading...
         </div>)
-      return (
-        <div id="todo">
-            <div><h1 id="Thead">Tasks</h1></div>
-          <input type="text" placeholder={this.state.message} value={this.state.entry} onChange={this.entryChange.bind(this)} />
-          <button className="button glyphy" id="createTodo" value="Add task" onClick={this.createTodoEvent.bind(this)} ><Glyphicon glyph="plus" /></button>
-          <button className="button glyphy" type='submit' onClick={()=>this.setState({asc: this.state.asc * -1})}><Glyphicon glyph="sort" /></button>
+    return (
+      <div id="todo">
+          <div>
+            <h1 id="Thead">
+              Tasks
+            </h1>
+          </div>
+          <input type="text" placeholder={this.state.message}
+            value={this.state.entry} onChange={this.entryChange.bind(this)} />
+          <button className="button glyphy" id="createTodo"
+            onClick={this.createTodoEvent.bind(this)} ><Glyphicon glyph="plus" />
+          </button>
+          <button className="button glyphy" type='submit'
+            onClick={()=>this.setState({asc: this.state.asc * -1})}>
+            <Glyphicon glyph="sort" />
+          </button>
           <div>
             <span id="todoItems">{this.createList()}</span>
           </div>
@@ -99,21 +108,20 @@ createTodoEvent(){
   }
 
   class TodoItem extends Component {
-
     taskComplete(e){
-      console.log("task complete");
       $.ajax ({
         method: 'PUT',
         url: config.serverRoute + '/taskComplete/' + this.props.entry._id
-      }).done(()=>this.props.updateCurrentTodo())
+      }).done(()=>this.props.updateCurrentTodo());
     }
 
     render(){
       return (
         <span id="todoItems">
-          <input type="checkbox" name="todoitem"  onClick={this.taskComplete.bind(this)}/> {this.props.entry.entry}
+          <input type="checkbox" name="todoitem"
+            onClick={this.taskComplete.bind(this)}/> {this.props.entry.entry}
           <br />
-        </span>)
+        </span>);
     }
   }
 

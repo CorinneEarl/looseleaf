@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-//sets express(); as a variable so we can use in routes
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
@@ -37,11 +36,14 @@ app.use(function(req, res, next) {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //middleware allowing translation from .json to JavaScript objects and vice versa
+
 app.use(morgan('dev'));
 console.log('Deployed???', config)
+
 if (config.deployed){
   app.use(express.static('build'))
 }
+
 var apiRoutes = express.Router();
 
 apiRoutes.post('/createuser', usercontroller.createuser);
@@ -63,7 +65,6 @@ apiRoutes.put('/taskComplete/:taskId', todoscontroller.taskComplete);
 apiRoutes.put('/goalComplete/:goalId', goalscontroller.goalComplete);
 
 apiRoutes.put('/savelayout', layoutcontroller.saveLayout);
-
 
 apiRoutes.post('/authenticate', function(req, res) {
 
@@ -103,6 +104,7 @@ function requireAuthentication(req, res, next) {
 		return res.status(403).json({error: "No token found"});
 	};
 }
+
 function generateToken(user, res) {
   var token = jwt.sign(user, app.get('superSecret'), {
     expiresIn: 1440 //expires in 24 hours
@@ -113,6 +115,7 @@ function generateToken(user, res) {
     token: token
   });
 }
+
 apiRoutes.get('/verification', requireAuthentication, function(req, res) {
   res.json({ success: true, username: req.decoded['_doc'].username });
   console.log(req.decoded['_doc'].username);

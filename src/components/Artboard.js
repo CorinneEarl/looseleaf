@@ -48,7 +48,7 @@ class Artboard extends Component {
 
   onLayoutChange(layout){
 
-    console.log('Changing the layout',this.state)
+    console.log('Changing the layout', this.state)
     $.ajax ({
       method: 'PUT',
       url: config.serverRoute + '/savelayout',
@@ -64,18 +64,32 @@ class Artboard extends Component {
     var layouts = this.state.layouts
     this.isThereALayout();
     if (this.state.layouts.length === 0) {
-      return ( <div>Loading...</div>)
+      return (
+        <div>
+          Loading...
+        </div>
+      )
     }
-    console.log('layouts',layouts)
     return (
     	<div id="artboard">
-        <ReactGridLayout className="layout" layout={layouts} onLayoutChange={this.onLayoutChange.bind(this)}
+        <ReactGridLayout className="layout" layout={layouts}
+          onLayoutChange={this.onLayoutChange.bind(this)}
           cols={12} rowHeight={30} width={1200}>
-          <div key={"1"} className="comps" id="goals"><Goals username={this.props.realUsername}/></div>
-          <div key={"3"} className="comps" id="journal"><Journal username={this.props.realUsername}/></div>
-          <div key={"5"} className="comps" id="notepad"><Notepad username={this.props.realUsername}/></div>
-          <div key={"2"} className="comps" id="todo"><Todo username={this.props.realUsername}/></div>
-          <div key={"4"} className="comps" id="calendar"><Calendar username={this.props.realUsername}/></div>
+          <div key={"1"} className="comps" id="goals">
+            <Goals username={this.props.realUsername}/>
+          </div>
+          <div key={"2"} className="comps" id="todo">
+            <Todo username={this.props.realUsername}/>
+          </div>
+          <div key={"3"} className="comps" id="journal">
+            <Journal username={this.props.realUsername}/>
+          </div>
+          <div key={"4"} className="comps" id="calendar">
+            <Calendar username={this.props.realUsername}/>
+          </div>
+          <div key={"5"} className="comps" id="notepad">
+            <Notepad username={this.props.realUsername}/>
+          </div>
         </ReactGridLayout>
     	</div>
     );

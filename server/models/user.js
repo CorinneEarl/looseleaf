@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
-//requires mongoose
 
 var Schema = mongoose.Schema;
-//connects Schema to MongoDB database
 
 module.exports = mongoose.model('User', Schema ({
   firstName: { type: String, required: true},

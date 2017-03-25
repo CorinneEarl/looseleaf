@@ -13,4 +13,4 @@ var individualLayout = Schema ({
 module.exports = mongoose.model('Layout', Schema({
   layout: {type: [individualLayout], required: true},
   username: {type: String, required: true}
-}) )
+}))

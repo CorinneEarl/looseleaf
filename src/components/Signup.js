@@ -38,49 +38,62 @@ class Signup extends Component {
   }
 
   createUserEvent(){
-
-    if (this.state.firstName === "" || this.state.lastName ==="" || this.state.email ==="" || this.state.username==="" || this.state.password ==="" || this.state.confirmPass==="") {
-      alert("All fields required!")
+    if (this.state.firstName === "" || this.state.lastName ===""
+    || this.state.email ==="" || this.state.username==="" || this.state.password ===""
+    || this.state.confirmPass==="") {
+      alert("All fields required!");
     } else {
-
-    if (this.state.password === this.state.confirmPass) {
-      var self=this;
-      $.ajax ({
-        method: 'POST',
-        url: config.serverRoute + '/createuser',
-        data: JSON.stringify(this.state),
-        contentType: 'application/json'
-      }).done(function(success) {
-        self.props.login(success.token, self.state.username)
+      if (this.state.password === this.state.confirmPass) {
+        var self=this;
+        $.ajax ({
+          method: 'POST',
+          url: config.serverRoute + '/createuser',
+          data: JSON.stringify(this.state),
+          contentType: 'application/json'
+        }).done(function(success) {
+          self.props.login(success.token, self.state.username)
           $.ajax ({
             method: 'POST',
             url: config.serverRoute + '/createlayout',
             data: JSON.stringify({username: self.state.username}),
             contentType: 'application/json'
-          })
-          .done(() => browserHistory.push('/Artboard'))
-      })
-    } else {
-      this.setState ({test: true})
-    } console.log(self.state.username);
+          }).done(() => browserHistory.push('/Artboard'));
+        });
+      } else {
+        this.setState ({test: true})
+      }
+    }
   }
-}
 
   render() {
     return (
       <div id="signup">
           <div id="login-singup">
-      			<input type="text" className="textField" id="firstName" placeholder="First name" value={this.state.firstName} onChange={this.firstNameChange.bind(this)} />
-      			<input type="text" className="textField" id="lastName" placeholder="Last name" value={this.state.lastName} onChange={this.lastNameChange.bind(this)} />
-      			<input type="text" className="textField" id="username" placeholder="Username" value={this.state.username} onChange={this.usernameChange.bind(this)} />
-      			<input type="password" className="textField" id="password" placeholder="Password" value={this.state.password} onChange={this.passwordChange.bind(this)} />
-      			<input type="password" className="textField" id="confirmPassword" placeholder="Confirm password" value={this.state.confirmPass} onChange={this.confirmPassword.bind(this)} />
-      			<input type="email" className="textField" id="emailInput" placeholder="Email address" value={this.state.email} onChange={this.emailChange.bind(this)} />
+      			<input type="text" className="textField" id="firstName"
+              placeholder="First name" value={this.state.firstName}
+              onChange={this.firstNameChange.bind(this)} />
+      			<input type="text" className="textField" id="lastName"
+              placeholder="Last name" value={this.state.lastName}
+              onChange={this.lastNameChange.bind(this)} />
+      			<input type="text" className="textField" id="username"
+              placeholder="Username" value={this.state.username}
+              onChange={this.usernameChange.bind(this)} />
+      			<input type="password" className="textField" id="password"
+              placeholder="Password" value={this.state.password}
+              onChange={this.passwordChange.bind(this)} />
+      			<input type="password" className="textField" id="confirmPassword"
+              placeholder="Confirm password" value={this.state.confirmPass}
+              onChange={this.confirmPassword.bind(this)} />
+      			<input type="email" className="textField" id="emailInput"
+              placeholder="Email address" value={this.state.email}
+              onChange={this.emailChange.bind(this)} />
             <div class="buttons">
-              <input type="button" className="button" id="createAccount" value="Create account" onClick={this.createUserEvent.bind(this)} />
+              <input type="submit" className="button" id="createAccount"
+                value="Create account" onClick={this.createUserEvent.bind(this)} />
             </div>
       		</div>
-        { this.state.test ? (<div id="wrongPassword">Sorry, password doesn't match. Try again.</div>) : (<div />) }
+        { this.state.test ? (<div id="wrongPassword">
+          Sorry, password doesn't match. Try again.</div>) : (<div />) }
       </div>
 	  );
   }

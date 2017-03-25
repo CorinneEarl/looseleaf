@@ -12,7 +12,10 @@ class Home extends Component {
 
   render() {
     return (
-      <h1>hommmeeee...</h1>
+      <div id="intro">
+        Looseleaf offers the <span id="freedom">freedom of a blank page </span>
+        without the bulk and constraints of a paper planner. 
+      </div>
     )
   }
 }

@@ -7,7 +7,4 @@ module.exports = mongoose.model('Notes', Schema ({
     entry: { type: String, required: true },
     date: Date,
     current: Boolean
-
-
-
 }))

@@ -7,5 +7,4 @@ module.exports = mongoose.model('Todo', Schema ({
     entry: { type: String, required: true },
     date: Date,
     current: Boolean
-
 }))

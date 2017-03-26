@@ -1,0 +1,255 @@
+body {
+	background-color: #f9f9f9;
+	background-repeat: repeat;
+	font-family: 'Josefin Slab', serif;
+	font-size: 20px;
+	color: #555555;
+}
+
+h1 {
+	padding-left: 22px;
+	font-weight: 700;
+	font-size: 26px;
+}
+
+#root {
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+}
+
+/* NAVIGATION */
+nav {
+	float: left;
+	padding: 70px 0 0 0;
+}
+
+nav li, nav li a {
+	display: inline;
+	text-decoration: none;
+	font-size: 24px;
+	margin-right: 25px;
+	color: #555555;
+}
+
+#intro, #about{
+	clear: both;
+	width: 100%;
+}
+
+.active {
+	color: #04756F;
+}
+
+/* component classes */
+.comps {
+	overflow-y: scroll;
+	box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+
+::-webkit-scrollbar {
+      width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 15px;
+    background: #555555;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: #555555, 0.5;
+}
+
+/* component divs */
+
+#goals, #journal, #notepad, #todo, #calendar {
+	background-color: #ffffff;
+	border-radius: 5px;
+	padding: 0px 10px;
+}
+
+#login, #signup {
+	width: 60%;
+}
+
+#Ghead{
+	color: #04756F;
+}
+
+#goals.comps {
+	border: 1px solid #04756F;
+}
+
+#goals.comps::-webkit-scrollbar-thumb {
+	background-color: #04756F;
+}
+
+#Thead {
+	color: #FF8C00;
+}
+
+#todo.comps {
+	border: 1px solid #FF8C00;
+}
+
+#todo.comps::-webkit-scrollbar-thumb {
+	background-color: #FF8C00;
+}
+
+#Nhead {
+	color:#FF2D00;
+}
+
+#notepad.comps {
+	border: 1px solid #FF2D00;
+}
+
+#notepad.comps::-webkit-scrollbar-thumb {
+	background-color: #FF2D00;
+}
+
+#Jhead{
+	color: #8b0202;
+}
+
+#journal.comps {
+	border: 1px solid #8b0202;
+}
+
+#journal.comps::-webkit-scrollbar-thumb {
+	background-color: #8b0202;
+}
+
+h2{
+	color: #8b0202;
+	font-weight: 700;
+	font-size: 18px;
+	padding-left: 22px;
+}
+
+#Chead{
+	color: #621253;
+}
+
+#calendar.comps {
+	border: 1px solid #621253;
+}
+
+#calendar.comps::-webkit-scrollbar-thumb {
+	background-color: #621253;
+}
+
+#Goals {
+	background-color: #ffffff;
+	color: #3f6f70;
+	border-style: solid;
+	border-color: #3f6f70;
+	border-width: 4px;
+}
+
+#Gbutton {
+	float: right;
+	padding: 22px;
+}
+
+}
+#Toals {
+	background-color: #ffffff;
+	color: #3f6f70;
+	border-style: solid;
+	border-color: #3f6f70;
+	border-width: 4px;
+}
+
+#Tbutton {
+	/*float: right;*/
+	padding: 22px;
+}
+
+#looseleaf-logo {
+	padding: 20px 10px;
+	float: left;
+}
+
+/* component elements */
+textarea, .singleText{
+	background-color: #ffffff;
+	resize: inline;
+	width: 95%;
+	font-family: 'Josefin Slab', serif;
+	font-weight: 400;
+	outline: none;
+	resize: none;
+	overflow: auto;
+	border-color: Transparent;
+	border-style:none;
+	clear: both;
+}
+
+input {
+	border: none;
+	border-style:none;
+}
+
+/*
+
+.button {
+	float: right;
+	clear: both;
+	background-color: #ffffff;
+	border: 2px solid #3f6f70;
+	border-radius: 8px;
+	color: #3f6f70;
+	padding: 5px 15px 15px 15px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 14px;
+	font-family: 'Josefin Slab', serif;
+	font-weight: 700;
+}*/
+
+.glyphy {
+	float: right;
+	clear: both;
+	background-color: #FFFFFF;
+	border: 2px solid #555555;
+	border-radius: 65px;
+	color: #555555;
+	padding: 5px 10px 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 20px;
+	font-family: 'Josefin Slab', serif;
+}
+
+.button:hover {
+	background-color: #3f6f70;
+	color: #ffffff;
+}
+
+#login .textField, #signup .textField {
+	margin: 5px 5px 5px 0px;
+	line-height: 25px;
+}
+
+#artboard {
+	clear: both;
+}
+
+#login-signup {
+	padding: 20px 0px;
+}
+
+#freedom {
+	font-family: 'Josefin Slab', serif;
+	font-weight: 700;
+}

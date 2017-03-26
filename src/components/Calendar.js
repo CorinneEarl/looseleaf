@@ -96,7 +96,7 @@ class Calendar extends Component {
           Loading...
         </div>)
     return (
-      <div id="calendar2">
+      <div>
         <div>
           <h1 id="Chead">
             Events Calendar

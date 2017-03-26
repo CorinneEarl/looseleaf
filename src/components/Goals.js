@@ -80,7 +80,7 @@ class Goals extends Component {
 
   render() {
     return (
-      <div id="goals">
+      <span>
         <div>
           <h1 id="Ghead">
             Goals
@@ -97,7 +97,7 @@ class Goals extends Component {
             { this.createGoalList() }
           </ul>
         </div>
-      </div>
+      </span>
     );
   }
 }

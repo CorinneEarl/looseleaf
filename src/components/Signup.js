@@ -67,7 +67,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div id="signup">
+      <div>
           <div id="login-singup">
       			<input type="text" className="textField" id="firstName"
               placeholder="First name" value={this.state.firstName}

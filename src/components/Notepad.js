@@ -89,7 +89,7 @@ class Notepad extends Component {
           Loading...
         </div>)
     return (
-      <div id="notepad" >
+      <div>
         <div>
           <h1 id="Nhead">
             Notepad

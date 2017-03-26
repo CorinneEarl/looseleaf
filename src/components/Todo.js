@@ -84,7 +84,7 @@ class Todo extends Component {
           Loading...
         </div>)
     return (
-      <div id="todo">
+      <div>
           <div>
             <h1 id="Thead">
               Tasks

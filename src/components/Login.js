@@ -41,7 +41,7 @@ class Login extends Component{
 
   render(){
     return(
-      <div id="login">
+      <div>
         <div id="intro">
           Looseleaf offers the <span id="freedom">freedom of a blank page </span>
           without the bulk and constraints of a paper planner.

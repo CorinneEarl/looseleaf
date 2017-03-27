@@ -68,30 +68,40 @@ class Signup extends Component {
   render() {
     return (
       <div>
-          <div id="login-singup">
-      			<input type="text" className="textField" id="firstName"
+        <div id="intro">
+          <p>Looseleaf offers the <span id="freedom">freedom of a blank page </span>
+          without the bulk and constraints of a paper planner.</p>
+        </div>
+        <div id="login-signup">
+      		<div>
+            <input type="text" className="textField" id="firstName"
               placeholder="First name" value={this.state.firstName}
               onChange={this.firstNameChange.bind(this)} />
       			<input type="text" className="textField" id="lastName"
               placeholder="Last name" value={this.state.lastName}
               onChange={this.lastNameChange.bind(this)} />
+          </div>
+          <div>
       			<input type="text" className="textField" id="username"
               placeholder="Username" value={this.state.username}
               onChange={this.usernameChange.bind(this)} />
       			<input type="password" className="textField" id="password"
               placeholder="Password" value={this.state.password}
               onChange={this.passwordChange.bind(this)} />
+          </div>
+          <div>
       			<input type="password" className="textField" id="confirmPassword"
               placeholder="Confirm password" value={this.state.confirmPass}
               onChange={this.confirmPassword.bind(this)} />
       			<input type="email" className="textField" id="emailInput"
               placeholder="Email address" value={this.state.email}
               onChange={this.emailChange.bind(this)} />
-            <div class="buttons">
-              <input type="submit" className="button" id="createAccount"
-                value="Create account" onClick={this.createUserEvent.bind(this)} />
-            </div>
-      		</div>
+          </div>
+          <div class="buttons">
+            <input type="submit" className="button" id="createAccount"
+              value="Create account" onClick={this.createUserEvent.bind(this)} />
+          </div>
+    		</div>
         { this.state.test ? (<div id="wrongPassword">
           Sorry, password doesn't match. Try again.</div>) : (<div />) }
       </div>

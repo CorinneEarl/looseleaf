@@ -124,35 +124,35 @@ class Journal extends Component {
     return (
       <div>
         <div>
-          <h1 id="Jhead">
-            Journal Space
-          </h1>
-          <h2>
-            {this.getDate()}
-          </h2>
+          <div className="flex">
+            <h1 className="Jhead">
+              Journal Space
+            </h1>
+            <h2 className="Jhead">
+              {this.getDate()}
+            </h2>
+          </div>
         </div>
-        <div>
-          {this.state.displayList === true ?<ul id="journalHistory">
-          { this.createJournalHistory() }</ul> : ""}
-        </div>
-        <textarea placeholder={this.state.message} value={this.state.entry}
-          onChange={this.entryChange.bind(this)} />
-        <div className="buttons">
-          <button className="glyphy button" id="createJournalEntry"
+        <div className="flex add">
+          <textarea placeholder={this.state.message} value={this.state.entry}
+            onChange={this.entryChange.bind(this)} />
+          <button className="glyphy button journal" id="createJournalEntry"
             value="Add Journal Entry" onClick={this.createJournalEntry.bind(this)}>
             <Glyphicon glyph="plus" />
           </button>
-          {this.state.displayButton === true ? <button className="glyphy button"
+        </div>
+        <div className="flex">
+          {this.state.displayList === true ?<ul id="journalHistory">
+          { this.createJournalHistory() }</ul> : <ul id="journalHistory">{""}</ul>}
+          {this.state.displayButton === true ? <button className="glyphy button journal"
             onClick={this.updateJournalHistoryOnClick.bind(this)}>
             <Glyphicon glyph="menu-down" />
           </button> :
-          <button className="button glyphy"
+          <button className="button glyphy journal"
             onClick={this.hideJournalHistoryOnClick.bind(this)}>
             <Glyphicon glyph="menu-up" />
           </button> }
-
         </div>
-
       </div>
     );
   }

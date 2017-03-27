@@ -1,15 +1,25 @@
 body {
 	background-color: #f9f9f9;
 	background-repeat: repeat;
-	font-family: 'Josefin Slab', serif;
-	font-size: 20px;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 18px;
 	color: #555555;
 }
 
 h1 {
+	font-family: 'Josefin Slab', serif;
+	font-size: 20px;
 	padding-left: 22px;
 	font-weight: 700;
 	font-size: 26px;
+}
+
+h2 {
+	font-family: 'Josefin Slab', serif;
+	padding-left: 22px;
+	font-weight: 700;
+	font-size: 18px;
+	padding-left: 22px;
 }
 
 #root {
@@ -20,6 +30,8 @@ h1 {
 
 /* NAVIGATION */
 nav {
+	font-family: 'Josefin Slab', serif;
+	font-size: 24px;
 	float: left;
 	padding: 70px 0 0 0;
 }
@@ -27,7 +39,6 @@ nav {
 nav li, nav li a {
 	display: inline;
 	text-decoration: none;
-	font-size: 24px;
 	margin-right: 25px;
 	color: #555555;
 }
@@ -47,8 +58,31 @@ nav li, nav li a {
 	box-shadow: 0 2px 8px rgba(0,0,0,.3);
 }
 
+.flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	align-content: stretch;
+	flex-wrap: nowrap;
+}
+
+.flex.add {
+	align-items: center;
+}
+
+.floatright {
+	float: right;
+	clear: right;
+}
+
+.floatleft {
+	float: left;
+	clear: left;
+}
+
+/* scrollbar */
 ::-webkit-scrollbar {
-      width: 5px;
+      width: 8px;
 }
 
 /* Track */
@@ -77,11 +111,57 @@ nav li, nav li a {
 	padding: 0px 10px;
 }
 
-#login, #signup {
-	width: 60%;
+.todoItems, .goalItem, {
+	padding-left: 20px;
 }
 
-#Ghead{
+#calendarItem li, #journalHistory li, #noteItem li {
+	list-style: none;
+}
+
+#looseleaf-logo {
+	padding: 20px 10px;
+}
+
+/* component elements */
+textarea, .singleText {
+	background-color: #ffffff;
+	resize: inline;
+	width: 95%;
+	font-weight: 400;
+	outline: none;
+	resize: none;
+	overflow: auto;
+	border: none;
+	border-style:none;
+	clear: left;
+}
+
+.button {
+	float: right;
+	clear: right;
+	text-align: center;
+	border-radius: 20%;
+	text-decoration: none;
+	border: 2px solid #555555;
+	background-color: #FFFFFF;
+
+}
+
+.button:hover {
+	color: #ffffff;
+	background-color: #04756F;
+}
+
+.glyphy {
+	border-radius: 50%;
+	color: #555555;
+	padding: 5px 8px;
+	font-size: 10px;
+}
+
+/* custom components */
+.Ghead{
 	color: #04756F;
 }
 
@@ -93,7 +173,11 @@ nav li, nav li a {
 	background-color: #04756F;
 }
 
-#Thead {
+.goals.button:hover {
+	background-color: #3f6f70;
+}
+
+.Thead {
 	color: #FF8C00;
 }
 
@@ -105,7 +189,11 @@ nav li, nav li a {
 	background-color: #FF8C00;
 }
 
-#Nhead {
+.todo.button:hover {
+	background-color: #FF8C00;
+}
+
+.Nhead {
 	color:#FF2D00;
 }
 
@@ -117,7 +205,11 @@ nav li, nav li a {
 	background-color: #FF2D00;
 }
 
-#Jhead{
+.notepad.button:hover {
+	background-color: #FF2D00;
+}
+
+.Jhead{
 	color: #8b0202;
 }
 
@@ -129,14 +221,11 @@ nav li, nav li a {
 	background-color: #8b0202;
 }
 
-h2{
-	color: #8b0202;
-	font-weight: 700;
-	font-size: 18px;
-	padding-left: 22px;
+.journal.button:hover {
+	background-color: #8b0202;
 }
 
-#Chead{
+.Chead{
 	color: #621253;
 }
 
@@ -148,105 +237,38 @@ h2{
 	background-color: #621253;
 }
 
-#Goals {
-	background-color: #ffffff;
-	color: #3f6f70;
-	border-style: solid;
-	border-color: #3f6f70;
-	border-width: 4px;
+.calendar.button:hover {
+	background-color: #621253;
 }
 
-#Gbutton {
-	float: right;
-	padding: 22px;
-}
-
-}
-#Toals {
-	background-color: #ffffff;
-	color: #3f6f70;
-	border-style: solid;
-	border-color: #3f6f70;
-	border-width: 4px;
-}
-
-#Tbutton {
-	/*float: right;*/
-	padding: 22px;
-}
-
-#looseleaf-logo {
-	padding: 20px 10px;
-	float: left;
-}
-
-/* component elements */
-textarea, .singleText{
-	background-color: #ffffff;
-	resize: inline;
-	width: 95%;
-	font-family: 'Josefin Slab', serif;
-	font-weight: 400;
-	outline: none;
-	resize: none;
-	overflow: auto;
-	border-color: Transparent;
-	border-style:none;
-	clear: both;
-}
-
-input {
-	border: none;
-	border-style:none;
-}
-
-/*
-
-.button {
-	float: right;
-	clear: both;
-	background-color: #ffffff;
-	border: 2px solid #3f6f70;
-	border-radius: 8px;
-	color: #3f6f70;
-	padding: 5px 15px 15px 15px;
-	text-align: center;
-	text-decoration: none;
-	font-size: 14px;
-	font-family: 'Josefin Slab', serif;
-	font-weight: 700;
-}*/
-
-.glyphy {
-	float: right;
-	clear: both;
-	background-color: #FFFFFF;
-	border: 2px solid #555555;
-	border-radius: 65px;
-	color: #555555;
-	padding: 5px 10px 5px 10px;
-	text-align: center;
-	text-decoration: none;
-	font-size: 20px;
-	font-family: 'Josefin Slab', serif;
-}
-
-.button:hover {
-	background-color: #3f6f70;
-	color: #ffffff;
-}
-
-#login .textField, #signup .textField {
+#login.textField, #signup.textField {
 	margin: 5px 5px 5px 0px;
 	line-height: 25px;
 }
 
-#artboard {
+#artboard, #intro {
+	width: 90%;
+	padding: 20px 0px;
 	clear: both;
 }
 
+#intro {
+	margin: auto;
+	width: 40%;
+}
+
 #login-signup {
-	padding: 20px 0px;
+	width: 25%;
+	margin: auto;
+}
+
+#login-signup > div {
+	display: flex;
+	justify-content: center;
+}
+
+#login-signup input {
+	margin: 10px 5px;
 }
 
 #freedom {

@@ -43,14 +43,16 @@ class Login extends Component{
     return(
       <div>
         <div id="intro">
-          Looseleaf offers the <span id="freedom">freedom of a blank page </span>
-          without the bulk and constraints of a paper planner.
+          <p>Looseleaf offers the <span id="freedom">freedom of a blank page </span>
+          without the bulk and constraints of a paper planner.</p>
         </div>
         <div id="login-signup">
-      		<input type="text" className="textField" placeholder="Enter username"
-            value={this.state.username} onChange={this.usernameChange.bind(this)} />
-      		<input type="password" className="textField" placeholder="Enter password"
-            value={this.state.password} onChange={this.passwordChange.bind(this)} />
+          <div>
+        		<input type="text" className="textField" placeholder="Enter username"
+              value={this.state.username} onChange={this.usernameChange.bind(this)} />
+        		<input type="password" className="textField" placeholder="Enter password"
+              value={this.state.password} onChange={this.passwordChange.bind(this)} />
+          </div>
           <div class="buttons">
             <input type="submit" className="button" value="Login"
               onClick={this.validateUser.bind(this)} />

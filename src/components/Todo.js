@@ -86,21 +86,23 @@ class Todo extends Component {
     return (
       <div>
           <div>
-            <h1 id="Thead">
+            <h1 className="Thead">
               Tasks
             </h1>
           </div>
-          <input type="text" placeholder={this.state.message}
-            value={this.state.entry} onChange={this.entryChange.bind(this)} />
-          <button className="button glyphy" id="createTodo"
-            onClick={this.createTodoEvent.bind(this)} ><Glyphicon glyph="plus" />
-          </button>
-          <button className="button glyphy" type='submit'
-            onClick={()=>this.setState({asc: this.state.asc * -1})}>
-            <Glyphicon glyph="sort" />
-          </button>
-          <div>
-            <span id="todoItems">{this.createList()}</span>
+          <div className="flex add">
+            <input type="text" className="singleText" placeholder={this.state.message}
+              value={this.state.entry} onChange={this.entryChange.bind(this)} />
+            <button className="button glyphy todo" id="createTodo"
+              onClick={this.createTodoEvent.bind(this)} ><Glyphicon glyph="plus" />
+            </button>
+          </div>
+          <div className="flex">
+            <span className="todoItems">{this.createList()}</span>
+            <button className="button glyphy todo"
+              onClick={()=>this.setState({asc: this.state.asc * -1})}>
+              <Glyphicon glyph="sort" />
+            </button>
           </div>
         </div>
       );
@@ -117,7 +119,7 @@ class Todo extends Component {
 
     render(){
       return (
-        <span id="todoItems">
+        <span className="todoItems">
           <input type="checkbox" name="todoitem"
             onClick={this.taskComplete.bind(this)}/> {this.props.entry.entry}
           <br />

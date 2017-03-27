@@ -91,29 +91,29 @@ class Notepad extends Component {
     return (
       <div>
         <div>
-          <h1 id="Nhead">
+          <h1 className="Nhead">
             Notepad
           </h1>
         </div>
-        <div>
+        <div className="flex add">
           <textarea placeholder={this.state.message} value={this.state.entry}
             onChange={this.entryChange.bind(this)} />
-		      <div className="buttons">
-		        <button className="button" id="createNote"
-              value="Add Notes" className="glyphy button"
+          <button id="createNote" className="glyphy button notepad"
               onClick={this.createNoteEvent.bind(this)} ><Glyphicon glyph="plus" />
-            </button>
-            {this.state.showButton === true ? <button className="glyphy button"
-              onClick={this.updateCurrentNotes.bind(this)}><Glyphicon glyph="menu-up" />
-            </button> :
-            <button className="button glyphy"
-              onClick={this.hideNotesHistoryOnClick.bind(this)} >
-              <Glyphicon glyph="menu-down" />
-            </button>}
-          </div>
+          </button>
         </div>
-        <div>
-          {this.state.displayList === true ? <ul id="noteItem">{ this.createNoteList() }</ul> : ""}
+        <div className="flex">
+          {this.state.displayList === true ?
+            <ul id="noteItem">
+              { this.createNoteList() }
+            </ul> : <ul id="noteItem">{""}</ul>}
+          {this.state.showButton === true ? <button className="glyphy button notepad"
+            onClick={this.updateCurrentNotes.bind(this)}><Glyphicon glyph="menu-down" />
+          </button> :
+          <button className="button glyphy notepad"
+            onClick={this.hideNotesHistoryOnClick.bind(this)} >
+            <Glyphicon glyph="menu-up" />
+          </button>}
         </div>
       </div>
     );

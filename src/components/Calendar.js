@@ -98,17 +98,17 @@ class Calendar extends Component {
     return (
       <div>
         <div>
-          <h1 id="Chead">
+          <h1 className="Chead">
             Events Calendar
           </h1>
         </div>
-        <input type="text" className="singleText"
-          placeholder={this.state.message} value={this.state.entry}
-          onChange={this.entryChange.bind(this)} />
-        <DatePicker selected={this.state.startDate}
-          onChange={this.handleChange.bind(this)} />
-        <div className="buttons">
-          <button className="glyphy button" id="createNote"
+        <div className="flex add">
+          <input type="text" className="singleText"
+            placeholder={this.state.message} value={this.state.entry}
+            onChange={this.entryChange.bind(this)} />
+          <DatePicker className="singleText" selected={this.state.startDate}
+            onChange={this.handleChange.bind(this)} />
+          <button className="glyphy button calendar" id="createNote"
             onClick={this.createCalendarEvent.bind(this)}>
             <Glyphicon glyph="plus" />
           </button>

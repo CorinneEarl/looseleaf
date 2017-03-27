@@ -80,24 +80,22 @@ class Goals extends Component {
 
   render() {
     return (
-      <span>
+      <div>
         <div>
-          <h1 id="Ghead">
+          <h1 className="Ghead">
             Goals
           </h1>
         </div>
-        <textarea placeholder={this.state.message}  value={this.state.entry}
-          onChange={this.entryChange.bind(this)} />
-        <button className="glyphy  button" id="createGoal" value="Add goal"
-          onClick={this.createGoalEvent.bind(this)} >
-          <Glyphicon glyph="plus" />
-        </button>
-        <div>
-          <ul id="goalItem">
-            { this.createGoalList() }
-          </ul>
+        <div className="flex add">
+          <textarea placeholder={this.state.message}  value={this.state.entry}
+            onChange={this.entryChange.bind(this)} />
+          <button className="button glyphy goals" id="createGoal"
+            onClick={this.createGoalEvent.bind(this)} >
+            <Glyphicon glyph="plus" />
+          </button>
         </div>
-      </span>
+        { this.createGoalList() }
+      </div>
     );
   }
 }
@@ -114,11 +112,11 @@ class GoalItem extends Component {
 
   render(){
     return (
-      <span id="goalItems">
+      <div className="goalItem">
         <input type="checkbox" name="goalitem"
           onClick={this.goalComplete.bind(this)}/> {this.props.entry.entry}
         <br />
-      </span>)
+      </div>)
   }
 }
 

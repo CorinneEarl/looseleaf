@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
-import { Link } from 'react-router'
+import React, {Component} from 'react';
+import { Link } from 'react-router';
+import userComponent from './userComponent'
 
-export default class App extends Component{
+class App extends Component{
   constructor(props){
     super(props)
     this.state = {
@@ -22,6 +23,7 @@ export default class App extends Component{
   }
 
   login(token, username){
+    this.props.login(username, token);
     document.cookie = JSON.stringify({token, username})
     this.setState({token, username})
   }
@@ -51,6 +53,7 @@ export default class App extends Component{
 
     return (
       <div>
+        {this.props.username}
         <div className="flex">
           <div id="looseleaf-logo">
             <img src={require('../../public/images/LL-logo.png')} />
@@ -77,3 +80,4 @@ export default class App extends Component{
     )
   }
 }
+export default userComponent(App);

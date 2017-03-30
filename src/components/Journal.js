@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 var config = require('../../config');
 import { Glyphicon } from 'react-bootstrap';
+import userComponent from './userComponent'
 
 class Journal extends Component {
   constructor(props) {
@@ -123,6 +124,7 @@ class Journal extends Component {
     )
     return (
       <div>
+        This is the journal of {this.props.username}
         <div>
           <div className="flex">
             <h1 className="Jhead">
@@ -158,4 +160,4 @@ class Journal extends Component {
   }
 }
 
-export default Journal;
+export default userComponent(Journal);

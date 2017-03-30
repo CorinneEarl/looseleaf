@@ -246,10 +246,14 @@ textarea, .singleText {
 	line-height: 25px;
 }
 
-#artboard, #intro {
+#artboard, #intro, #about {
 	width: 90%;
 	padding: 20px 0px;
 	clear: both;
+}
+
+#about {
+	margin: auto;
 }
 
 #intro {

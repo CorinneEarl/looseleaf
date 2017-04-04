@@ -6,6 +6,9 @@ module.exports = {
   'webpack': 'http://localhost:3000',
   'serverRoute':'http://localhost:3002/api',
   'deployed' : !dev,
+  'saltRounds' : 10,
+  'myPlaintextPassword' : 's0/\/\P4$$w0rD',
+  'someOtherPlaintextPassword' : 'not_bacon',
   port : process.env.PORT || 3002
   // 'usernamePlaceholder': "User's Name"
 }
